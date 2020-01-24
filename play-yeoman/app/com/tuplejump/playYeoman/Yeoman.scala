@@ -13,6 +13,7 @@ import scala.concurrent.Future
 
 class Yeoman @Inject() (val controllerComponents: ControllerComponents,
                         environment: play.api.Environment,
+                        assets: Assets,
                         devAssets: DevAssets) extends BaseController {
 
   def at(file: String): Action[AnyContent] = atHandler(file)
@@ -27,7 +28,7 @@ class Yeoman @Inject() (val controllerComponents: ControllerComponents,
   }
 
   def assetHandler(file: String): Action[AnyContent] = {
-    Assets.at("/public", file)
+    assets.at("/public", file)
   }
 
   def redirectRoot(base: String = "/ui/") = Action {
