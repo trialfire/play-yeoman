@@ -10,7 +10,7 @@ sbtVersion in Global := "0.13.11"
 
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.5.0")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.0")
 
 addSbtPlugin("com.typesafe.sbt" % "sbt-web" % "1.0.2")
 
