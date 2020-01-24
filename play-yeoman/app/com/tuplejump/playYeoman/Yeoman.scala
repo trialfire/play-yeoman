@@ -11,8 +11,9 @@ import scala.collection.JavaConverters._
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-class Yeoman @Inject() (environment: play.api.Environment,
-                        devAssets: DevAssets) extends Controller {
+class Yeoman @Inject() (val controllerComponents: ControllerComponents,
+                        environment: play.api.Environment,
+                        devAssets: DevAssets) extends BaseController {
 
   def at(file: String): Action[AnyContent] = atHandler(file)
 
@@ -44,8 +45,9 @@ class Yeoman @Inject() (environment: play.api.Environment,
 
 }
 
-class DevAssets @Inject() (environment: play.api.Environment,
-                           configuration: play.api.Configuration) extends Controller {
+class DevAssets @Inject() (val controllerComponents: ControllerComponents,
+                           environment: play.api.Environment,
+                           configuration: play.api.Configuration) extends BaseController {
   // paths to the grunt compile directory or else the application directory, in order of importance
   val runtimeDirs = configuration.getStringList("yeoman.devDirs")
   val basePaths: List[java.io.File] = runtimeDirs match {
