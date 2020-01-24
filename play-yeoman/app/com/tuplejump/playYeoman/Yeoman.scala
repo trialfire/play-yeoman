@@ -49,9 +49,9 @@ class DevAssets @Inject() (val controllerComponents: ControllerComponents,
                            environment: play.api.Environment,
                            configuration: play.api.Configuration) extends BaseController {
   // paths to the grunt compile directory or else the application directory, in order of importance
-  val runtimeDirs = configuration.getStringList("yeoman.devDirs")
+  val runtimeDirs = configuration.getOptional[Seq[String]]("yeoman.devDirs")
   val basePaths: List[java.io.File] = runtimeDirs match {
-    case Some(dirs) => dirs.asScala.map(environment.getFile _).toList
+    case Some(dirs) => dirs.map(environment.getFile _).toList
     case None => List(environment.getFile("ui/.tmp"), environment.getFile("ui/app"),
       //added ui to defaults since the newer projects have bower_components in ui directory instead of ui/app/components
       environment.getFile("ui"))
