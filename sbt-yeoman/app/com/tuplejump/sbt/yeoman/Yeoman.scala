@@ -79,7 +79,7 @@ object Yeoman extends AutoPlugin {
   }
 
   override def projectSettings: Seq[_root_.sbt.Def.Setting[_]] = super.projectSettings ++ Seq(
-    libraryDependencies ++= Seq("com.tuplejump" %% "play-yeoman" % "0.9.0" intransitive()),
+    libraryDependencies ++= Seq("com.trialfire" %% "play-yeoman" % "0.9.0" intransitive()),
 
     // Where does the UI live?
     yeomanDirectory <<= (baseDirectory in Compile) {

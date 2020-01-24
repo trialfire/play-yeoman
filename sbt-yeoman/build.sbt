@@ -1,6 +1,6 @@
 name := """sbt-yeoman"""
 
-organization := "com.tuplejump"
+organization := "com.trialfire"
 
 sbtPlugin := true
 
@@ -34,13 +34,7 @@ Seq(
 
 publishMavenStyle := true
 
-publishTo <<= version { (v: String) =>
-  val nexus = "https://oss.sonatype.org/"
-  if (v.trim.endsWith("SNAPSHOT"))
-    Some("snapshots" at nexus + "content/repositories/snapshots")
-  else
-    Some("releases"  at nexus + "service/local/staging/deploy/maven2")
-}
+publishTo := Some("Trialfire Snapshots" at "s3://tf-repo")
 
 publishArtifact in Test := false
 

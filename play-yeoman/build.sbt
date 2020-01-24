@@ -6,19 +6,12 @@ val main = Project(appName, file(".")).enablePlugins(PlayScala).settings(
   scalaVersion in Global := "2.11.7",
   //    crossScalaVersions := Seq("2.11.7"),
   homepage := Some(url("https://github.com/tuplejump/play-yeoman")),
-  organization := "com.tuplejump",
+  organization := "com.trialfire",
   organizationName := "Tuplejump Software Pvt. Ltd.",
   organizationHomepage := Some(new java.net.URL("http://www.tuplejump.com")),
   licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0")),
   publishMavenStyle := true,
-  publishTo <<= version {
-    (v: String) =>
-      val nexus = "https://oss.sonatype.org/"
-      if (v.trim.endsWith("SNAPSHOT"))
-        Some("snapshots" at nexus + "content/repositories/snapshots")
-      else
-        Some("releases" at nexus + "service/local/staging/deploy/maven2")
-  },
+  publishTo := Some("Trialfire Snapshots" at "s3://tf-repo"),
   publishArtifact in Test := false,
   pomIncludeRepository := {
     _ => false
